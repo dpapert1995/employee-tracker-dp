@@ -6,13 +6,17 @@ const util = require('util');
 
 // Create the connection to MySQL WorkBench
 let connection = mysql.createConnection({
-    database: 'employee_DB'
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'Menacham1!',
+    database: 'employee_DB',
 });
 
 connection.query = util.promisify(connection.query);
 
 // Begin the application after establishing the connection.
-connection.connect(function (err) {
+connection.connect(err => {
     if (err) throw err;
     userChoice();
 })
